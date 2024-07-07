@@ -1,5 +1,6 @@
-package com.example.shift_pizza_2024.data
+package com.example.shift_pizza_2024.network
 
+import com.example.shift_pizza_2024.data.PizzasResponse
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
@@ -45,4 +46,6 @@ class LoanRepository {
     private val loanApi by lazy {
         retrofit.create(LoansApi::class.java)
     }
+    suspend fun getCatalog(): List<PizzasResponse> =
+        loanApi.getCatalog()
 }
