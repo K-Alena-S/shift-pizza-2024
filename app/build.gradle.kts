@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
 android {
@@ -45,4 +46,32 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Навигация с Compose
+    implementation(libs.androidx.navigation.compose)
+
+    // Работа с сетью
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.kotlinxserialization)
+    implementation(libs.okhttp.logginginterceptor)
+
+    // Сериализация JSON
+    implementation(libs.kotlinx.serialization.json)
+
+    // Асинхронное программирование
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Unit-тестирование
+    testImplementation(libs.junit)
+    implementation(libs.kotlinx.coroutines.test)
+
+    // UI-тестирование
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    // Превью для Compose
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }
