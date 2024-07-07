@@ -10,5 +10,3 @@ data class PizzaSize (
     val prise: Number
 )
 
-
-
