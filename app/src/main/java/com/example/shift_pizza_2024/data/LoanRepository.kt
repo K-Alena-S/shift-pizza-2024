@@ -1,8 +1,10 @@
 package com.example.shift_pizza_2024.data
 
 import kotlinx.serialization.json.Json
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -29,10 +31,16 @@ class LoanRepository {
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(provideLoggingInterceptor())
             .build()
 
     private fun provideKotlinXSerializationFactory(): Converter.Factory =
         Json.asConverterFactory("application/json; charset=UTF8".toMediaType())
+
+    private fun provideLoggingInterceptor(): Interceptor =
+        HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
     private val loanApi by lazy {
         retrofit.create(LoansApi::class.java)
