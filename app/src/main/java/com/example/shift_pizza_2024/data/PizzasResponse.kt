@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PizzasResponse (
-    val succenss: Boolean,
-    val reason: String,
-    val catalog: Pizza
+    val success: Boolean,
+    val reason: String?= null,
+    val catalog: List<Pizza>
 )

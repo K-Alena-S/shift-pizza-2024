@@ -11,18 +11,18 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.shift_pizza_2024.data.PizzasResponse
+import com.example.shift_pizza_2024.data.Pizza
 
 @Composable
 fun ContentComponent(
-    loans: List<PizzasResponse>,
+    loans: List<Pizza>,
     onItemClicked: (loanId: Long) -> Unit,
 ) {
     LazyColumn(modifier = Modifier.fillMaxHeight()) {
         items(loans) { loan ->
             LoanItem(
                 loan,
-                onItemClicked = { onItemClicked(loan.catalog.id) }
+                onItemClicked = { onItemClicked(loan.id) }
             )
         }
     }
@@ -30,7 +30,7 @@ fun ContentComponent(
 
 @Composable
 private fun LoanItem(
-    item: PizzasResponse,
+    item: Pizza,
     onItemClicked: () -> Unit,
 ) {
     Column (
@@ -39,7 +39,7 @@ private fun LoanItem(
             .clickable(onClick = onItemClicked)
     ) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(text = item.catalog.name)
+            Text(text = item.name)
         }
     }
 }

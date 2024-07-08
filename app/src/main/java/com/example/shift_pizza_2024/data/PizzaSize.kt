@@ -1,12 +1,11 @@
 package com.example.shift_pizza_2024.data
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class PizzaSize (
-    val name: Size,
-    @Contextual
-    val prise: Number
+    val name: SizeP,
+    val price: Int
 )
 

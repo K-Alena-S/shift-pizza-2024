@@ -12,10 +12,10 @@ fun formatAmountText(amount: Long): String {
     return numberFormatter.format(amount)
 }
 
-//@Composable
-//fun formatLoanStatus(status: LoanStatus): String =
-//    when (status) {
-//        LoanStatus.APPROVED   -> stringResource(R.string.approved)
-//        LoanStatus.REGISTERED -> stringResource(R.string.registered)
-//        LoanStatus.REJECTED   -> stringResource(R.string.rejected)
-//    }
+@Composable
+fun formatLoanStatus(status: LoanStatus): String =
+    when (status) {
+        LoanStatus.APPROVED   -> stringResource(R.string.approved)
+        LoanStatus.REGISTERED -> stringResource(R.string.registered)
+        LoanStatus.REJECTED   -> stringResource(R.string.rejected)
+    }

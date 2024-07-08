@@ -1,5 +1,6 @@
 package com.example.shift_pizza_2024.network
 
+import com.example.shift_pizza_2024.data.Pizza
 import com.example.shift_pizza_2024.data.PizzasResponse
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -46,6 +47,6 @@ class LoanRepository {
     private val loanApi by lazy {
         retrofit.create(LoansApi::class.java)
     }
-    suspend fun getCatalog(): List<PizzasResponse> =
-        loanApi.getCatalog()
+    suspend fun getCatalog(): List<Pizza> =
+        loanApi.getCatalog().catalog
 }

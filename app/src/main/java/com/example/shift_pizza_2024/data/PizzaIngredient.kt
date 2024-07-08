@@ -7,6 +7,6 @@ import kotlinx.serialization.Serializable
 data class PizzaIngredient(
     val name: Ingredient,
     @Contextual
-    val cost: Number,
+    val cost: Long,
     val img: String
 )

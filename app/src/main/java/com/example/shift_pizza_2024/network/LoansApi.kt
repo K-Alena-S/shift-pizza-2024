@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface LoansApi {
     @GET("pizza/catalog")
-    suspend fun getCatalog(): List<PizzasResponse>
+    suspend fun getCatalog(): PizzasResponse
 }
