@@ -1,11 +1,11 @@
 package com.example.shift_pizza_2024
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
 import com.example.shift_pizza_2024.network.LoanRepository
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
     val repository = LoanRepository()
 

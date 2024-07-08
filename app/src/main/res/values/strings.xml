@@ -9,4 +9,10 @@
 <string name="history_name_pattern">%s %s.</string>
 <string name="history_title">Список пицц</string>
 <string name="history_amount_with_percent_pattern">%s под %.2f%%</string>
+
+    <string name="ruble">₽</string>
+    <string name="approved">Одобрена</string>
+    <string name="registered">На рассмотрении</string>
+    <string name="rejected">Отклонена</string>
+
 </resources>
