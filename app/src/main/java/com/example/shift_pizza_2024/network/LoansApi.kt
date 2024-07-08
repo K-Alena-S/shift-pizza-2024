@@ -4,6 +4,6 @@ import com.example.shift_pizza_2024.data.PizzasResponse
 import retrofit2.http.GET
 
 interface LoansApi {
-    @GET("catalog")
+    @GET("pizza/catalog")
     suspend fun getCatalog(): List<PizzasResponse>
 }

@@ -18,7 +18,7 @@ fun MainScreen(repository: LoanRepository) {
             composable<HistoryRoute> {
                 HistoryScreen(
                     repository = repository,
-                    onItemSelected = { /*TODO Добавит навигацию на экран деталей*/ },
+                    onItemSelected = {},
                 )
             }
         }
