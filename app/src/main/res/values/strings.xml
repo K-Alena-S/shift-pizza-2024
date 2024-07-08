@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">shift-pizza-2024</string>
+
+<string name="error_title">Произошла ошибка</string>
+<string name="error_try_again">Повторить</string>
+<string name="error_unknown_error">Неизвестная ошибка</string>
+
+<!--	History Screen -->
+<string name="history_name_pattern">%s %s.</string>
+<string name="history_title">Список пицц</string>
+<string name="history_amount_with_percent_pattern">%s под %.2f%%</string>
+
+    <string name="ruble">₽</string>
+    <string name="approved">Одобрена</string>
+    <string name="registered">На рассмотрении</string>
+    <string name="rejected">Отклонена</string>
+
 </resources>
