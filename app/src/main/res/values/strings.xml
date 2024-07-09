@@ -1,18 +1,39 @@
 <resources>
     <string name="app_name">shift-pizza-2024</string>
 
-<string name="error_title">Произошла ошибка</string>
-<string name="error_try_again">Повторить</string>
-<string name="error_unknown_error">Неизвестная ошибка</string>
+    <string name="error_title">Произошла ошибка</string>
+    <string name="error_try_again">Повторить</string>
+    <string name="error_unknown_error">Неизвестная ошибка</string>
 
-<!--	History Screen -->
-<string name="history_name_pattern">%s %s.</string>
-<string name="history_title">Список пицц</string>
-<string name="history_amount_with_percent_pattern">%s под %.2f%%</string>
+    <!--	History Screen -->
+    <string name="history_name_pattern">%s %s.</string>
+    <string name="history_title">Список пицц</string>
+    <string name="history_amount_with_percent_pattern">%s под %.2f%%</string>
 
     <string name="ruble">₽</string>
     <string name="approved">Одобрена</string>
     <string name="registered">На рассмотрении</string>
     <string name="rejected">Отклонена</string>
+
+    <!--	Details Screen -->
+    <string name="details_title">Информация о пицце</string>
+    <string name="details_name">Название</string>
+    <string name="details_ingridients">Ингридиенты</string>
+    <string name="details_description">Описание</string>
+    <string name="details_calories">Калории</string>
+    <string name="details_protein">Белки</string>
+    <string name="details_total_fat">Жиры</string>
+    <string name="details_carbohydrates">Углеводы</string>
+    <string name="details_sodium">Натрий</string>
+    <string name="details_ingredients">Ингредиенты</string>
+    <string name="details_toppings">Топпинги</string>
+    <string name="details_sizes">Размеры</string>
+    <string name="details_doughs">Тесто</string>
+    <string name="details_allergens">Аллергены</string>
+    <string name="details_is_vegetarian">Вегетарианская</string>
+    <string name="details_is_gluten_free">Без глютена</string>
+    <string name="details_is_new">Новинка</string>
+    <string name="details_is_hit">Хит продаж</string>
+    <string name="details_img">Изображение</string>
 
 </resources>

@@ -49,4 +49,8 @@ class LoanRepository {
     }
     suspend fun getCatalog(): List<Pizza> =
         loanApi.getCatalog().catalog
+
+    suspend fun getPizza(loanId: Long): Pizza =
+        loanApi.getCatalog().catalog[loanId.toInt()]
+
 }
