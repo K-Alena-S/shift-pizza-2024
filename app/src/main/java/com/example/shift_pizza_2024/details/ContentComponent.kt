@@ -11,11 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.shift_pizza_2024.R
+import com.example.shift_pizza_2024.data.Ingredient
 import com.example.shift_pizza_2024.data.Pizza
-import com.example.shift_pizza_2024.formatAmountText
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Locale
+import com.example.shift_pizza_2024.data.PizzaIngredient
 
 @Composable
 fun ContentComponent(
@@ -29,9 +27,7 @@ fun ContentComponent(
 		DetailItem(nameResId = R.string.details_total_fat, value = pizza.totalFat)
 		DetailItem(nameResId = R.string.details_carbohydrates, value = pizza.carbohydrates)
 		DetailItem(nameResId = R.string.details_sodium, value = pizza.sodium)
-//
-//		DetailItem(nameResId = R.string.details_ingredients, value = formatAmountText(pizza.ingredients))
-//		DetailItem(nameResId = R.string.details_toppings, value = formatAmountText(pizza.toppings))
+		DetailItem(nameResId = R.string.details_ingredients, value = formatAmountText(pizza.ingredients))
 	}
 }
 
@@ -44,5 +40,51 @@ private fun DetailItem(@StringRes nameResId: Int, value: String) {
 	) {
 		Text(text = stringResource(nameResId), style = MaterialTheme.typography.labelLarge)
 		Text(text = value, style = MaterialTheme.typography.bodyLarge)
+	}
+}
+
+@Composable
+private fun formatAmountText(ingredients: List<PizzaIngredient>): String {
+	return ingredients.joinToString(separator = ", ") { ingredient ->
+		val name = when (ingredient.name) {
+			Ingredient.PINEAPPLE -> "Ананас"
+			Ingredient.MOZZARELLA -> "Моцарелла"
+			Ingredient.PEPERONI -> "Пеперони"
+			Ingredient.GREEN_PEPPER -> "Зелёный перец"
+			Ingredient.MUSHROOMS -> "Грибы"
+			Ingredient.BASIL -> "Базилик"
+			Ingredient.CHEDDAR -> "Чеддер"
+			Ingredient.PARMESAN -> "Пармезан"
+			Ingredient.FETA -> "Фета"
+			Ingredient.HAM -> "Ветчина"
+			Ingredient.PICKLE -> "Огурец"
+			Ingredient.TOMATO -> "Томат"
+			Ingredient.BACON -> "Бекон"
+			Ingredient.ONION -> "Лук"
+			Ingredient.CHILE -> "Чили"
+			Ingredient.SHRIMPS -> "Креветки"
+			Ingredient.CHICKEN_FILLET -> "Куриное филе"
+			Ingredient.MEATBALLS -> "Фрикадельки"
+//			Ingredient.PINEAPPLE -> R.string.ingredient_pineapple
+//			Ingredient.MOZZARELLA -> R.string.ingredient_mozzarella
+//			Ingredient.PEPERONI -> R.string.ingredient_peperoni
+//			Ingredient.GREEN_PEPPER -> R.string.ingredient_green_pepper
+//			Ingredient.MUSHROOMS -> R.string.ingredient_mushrooms
+//			Ingredient.BASIL -> R.string.ingredient_basil
+//			Ingredient.CHEDDAR -> R.string.ingredient_cheddar
+//			Ingredient.PARMESAN -> R.string.ingredient_parmesan
+//			Ingredient.FETA -> R.string.ingredient_feta
+//			Ingredient.HAM -> R.string.ingredient_ham
+//			Ingredient.PICKLE -> R.string.ingredient_pickle
+//			Ingredient.TOMATO -> R.string.ingredient_tomato
+//			Ingredient.BACON -> R.string.ingredient_bacon
+//			Ingredient.ONION -> R.string.ingredient_onion
+//			Ingredient.CHILE -> R.string.ingredient_chile
+//			Ingredient.SHRIMPS -> R.string.ingredient_shrimps
+//			Ingredient.CHICKEN_FILLET -> R.string.ingredient_chicken_fillet
+//			Ingredient.MEATBALLS -> R.string.ingredient_meatballs
+//			else -> ingredient.name.toString()
+		}
+		"$name: ${ingredient.cost}₽"
 	}
 }
