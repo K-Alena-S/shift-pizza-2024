@@ -1,7 +1,6 @@
 package com.example.shift_pizza_2024.network
 
 import com.example.shift_pizza_2024.data.Pizza
-import com.example.shift_pizza_2024.data.PizzasResponse
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,7 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import java.util.concurrent.TimeUnit
 
-class LoanRepository {
+class PizzaRepository {
 
     private companion object {
 
@@ -44,13 +43,13 @@ class LoanRepository {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-    private val loanApi by lazy {
-        retrofit.create(LoansApi::class.java)
+    private val pizzaApi by lazy {
+        retrofit.create(PizzasApi::class.java)
     }
     suspend fun getCatalog(): List<Pizza> =
-        loanApi.getCatalog().catalog
+        pizzaApi.getCatalog().catalog
 
-    suspend fun getPizza(loanId: Long): Pizza =
-        loanApi.getCatalog().catalog[loanId.toInt()]
+    suspend fun getPizza(pizzaId: Long): Pizza =
+        pizzaApi.getCatalog().catalog[pizzaId.toInt()]
 
 }

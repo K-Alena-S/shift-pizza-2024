@@ -15,21 +15,21 @@ import com.example.shift_pizza_2024.data.Pizza
 
 @Composable
 fun ContentComponent(
-    loans: List<Pizza>,
-    onItemClicked: (loanId: Long) -> Unit,
+    pizza: List<Pizza>,
+    onItemClicked: (pizzaId: Long) -> Unit,
 ) {
     LazyColumn(modifier = Modifier.fillMaxHeight()) {
-        items(loans) { loan ->
-            LoanItem(
-                loan,
-                onItemClicked = { onItemClicked(loan.id) }
+        items(pizza) { pizzas ->
+            PizzaItem(
+                pizzas,
+                onItemClicked = { onItemClicked(pizzas.id) }
             )
         }
     }
 }
 
 @Composable
-private fun LoanItem(
+private fun PizzaItem(
     item: Pizza,
     onItemClicked: () -> Unit,
 ) {

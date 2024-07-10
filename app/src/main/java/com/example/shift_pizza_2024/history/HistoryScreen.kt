@@ -14,14 +14,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.shift_pizza_2024.R
-import com.example.shift_pizza_2024.network.LoanRepository
+import com.example.shift_pizza_2024.network.PizzaRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 fun HistoryScreen(
-    repository: LoanRepository,
+    repository: PizzaRepository,
     onItemSelected: (loanId: Long) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -46,7 +46,7 @@ fun HistoryScreen(
             )
 
             is HistoryState.Content -> ContentComponent(
-                loans = state.loans,
+                pizza = state.pizzas,
                 onItemClicked = onItemSelected,
             )
         }
@@ -54,15 +54,15 @@ fun HistoryScreen(
 }
 
 private fun CoroutineScope.loadLoans(
-    repository: LoanRepository,
+    repository: PizzaRepository,
     setHistoryState: (HistoryState) -> Unit,
 ) {
     launch {
         setHistoryState(HistoryState.Loading)
 
         try {
-            val loans = repository.getCatalog()
-            setHistoryState(HistoryState.Content(loans))
+            val pizzas = repository.getCatalog()
+            setHistoryState(HistoryState.Content(pizzas))
         } catch (ce: CancellationException) {
             throw ce
         } catch (ex: Exception) {

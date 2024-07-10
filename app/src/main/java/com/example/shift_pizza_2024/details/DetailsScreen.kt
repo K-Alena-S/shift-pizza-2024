@@ -17,18 +17,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.shift_pizza_2024.R
-import com.example.shift_pizza_2024.network.LoanRepository
+import com.example.shift_pizza_2024.network.PizzaRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun DetailsScreen(loanId: Long, repository: LoanRepository) {
+fun DetailsScreen(pizzaId: Long, repository: PizzaRepository) {
 	val scope = rememberCoroutineScope()
 	var detailsState by remember { mutableStateOf<DetailsState>(DetailsState.Initial) }
 
 	LaunchedEffect(Unit) {
-		loadLoan(loanId, repository, setDetailsState = { detailsState = it })
+		loadPizza(pizzaId, repository, setDetailsState = { detailsState = it })
 	}
 
 	Column(modifier = Modifier.fillMaxSize()) {
@@ -47,28 +47,28 @@ fun DetailsScreen(loanId: Long, repository: LoanRepository) {
 			is DetailsState.Failure -> ErrorComponent(
 				message = state.message ?: stringResource(id = R.string.error_unknown_error),
 				onRetry = {
-					scope.loadLoan(loanId, repository, setDetailsState = { detailsState = it })
+					scope.loadPizza(pizzaId, repository, setDetailsState = { detailsState = it })
 				}
 			)
 
 			is DetailsState.Content -> ContentComponent(
-				pizza = state.loan,
+				pizza = state.pizza,
 			)
 		}
 	}
 }
 
-private fun CoroutineScope.loadLoan(
-	loanId: Long,
-	repository: LoanRepository,
+private fun CoroutineScope.loadPizza(
+	pizzaId: Long,
+	repository: PizzaRepository,
 	setDetailsState: (DetailsState) -> Unit,
 ) {
 	launch {
 		setDetailsState(DetailsState.Loading)
 
 		try {
-			val loan = repository.getPizza(loanId = loanId)
-			setDetailsState(DetailsState.Content(loan))
+			val pizza = repository.getPizza(pizzaId = pizzaId)
+			setDetailsState(DetailsState.Content(pizza))
 		} catch (ce: CancellationException) {
 			throw ce
 		} catch (ex: Exception) {
