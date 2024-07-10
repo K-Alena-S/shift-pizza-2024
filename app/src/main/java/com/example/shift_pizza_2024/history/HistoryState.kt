@@ -7,5 +7,5 @@ sealed interface HistoryState {
     data object Initial : HistoryState
     data object Loading : HistoryState
     data class Failure(val message: String?) : HistoryState
-    data class Content(val loans: List<Pizza>) : HistoryState
+    data class Content(val pizzas: List<Pizza>) : HistoryState
 }

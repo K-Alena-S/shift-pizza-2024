@@ -6,30 +6,33 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.shift_pizza_2024.data.Pizza
+import com.example.shift_pizza_2024.network.LoadImageFromUrl
 
 @Composable
 fun ContentComponent(
-    loans: List<Pizza>,
-    onItemClicked: (loanId: Long) -> Unit,
+    pizza: List<Pizza>,
+    onItemClicked: (pizzaId: Long) -> Unit,
 ) {
     LazyColumn(modifier = Modifier.fillMaxHeight()) {
-        items(loans) { loan ->
-            LoanItem(
-                loan,
-                onItemClicked = { onItemClicked(loan.id) }
+        items(pizza) { pizzas ->
+            PizzaItem(
+                pizzas,
+                onItemClicked = { onItemClicked(pizzas.id) }
             )
         }
     }
 }
 
 @Composable
-private fun LoanItem(
+private fun PizzaItem(
     item: Pizza,
     onItemClicked: () -> Unit,
 ) {
@@ -37,9 +40,11 @@ private fun LoanItem(
         Modifier
             .fillMaxWidth()
             .clickable(onClick = onItemClicked)
+            .padding(vertical = 8.dp, horizontal = 16.dp),
     ) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(text = item.name)
+            LoadImageFromUrl(url = item.img)
         }
     }
 }

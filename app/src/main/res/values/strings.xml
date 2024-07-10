@@ -5,15 +5,10 @@
     <string name="error_try_again">Повторить</string>
     <string name="error_unknown_error">Неизвестная ошибка</string>
 
-    <!--	History Screen -->
+    <!--	Catalog Screen -->
     <string name="history_name_pattern">%s %s.</string>
     <string name="history_title">Список пицц</string>
-    <string name="history_amount_with_percent_pattern">%s под %.2f%%</string>
-
     <string name="ruble">₽</string>
-    <string name="approved">Одобрена</string>
-    <string name="registered">На рассмотрении</string>
-    <string name="rejected">Отклонена</string>
 
     <!--	Details Screen -->
     <string name="details_title">Информация о пицце</string>
@@ -55,5 +50,7 @@
     <string name="ingredient_shrimps">Креветки</string>
     <string name="ingredient_chicken_fillet">Куриное филе</string>
     <string name="ingredient_meatballs">Фрикадельки</string>
+
+    <string name="pizza_image_cd">Картинка</string>
 
 </resources>
