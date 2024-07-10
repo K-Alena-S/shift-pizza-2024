@@ -6,11 +6,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.shift_pizza_2024.R
@@ -21,14 +19,17 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun HistoryScreen(
-    repository: PizzaRepository,
+    historyViewModel: HistoryViewModel,
     onItemSelected: (loanId: Long) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
-    var historyState by remember { mutableStateOf<HistoryState>(HistoryState.Initial) }
+//    var historyState by remember { mutableStateOf<HistoryState>(HistoryState.Initial) }
+
+    val historyState by historyViewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
-        loadLoans(repository, setHistoryState = { historyState = it })
+//        loadLoans(repository, setHistoryState = { historyState = it })
+        historyViewModel.loadPizzas()
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -40,9 +41,7 @@ fun HistoryScreen(
 
             is HistoryState.Failure -> ErrorComponent(
                 message = state.message ?: stringResource(id = R.string.error_unknown_error),
-                onRetry = {
-                    scope.loadLoans(repository, setHistoryState = { historyState = it })
-                }
+                onRetry = { historyViewModel.loadPizzas() },
             )
 
             is HistoryState.Content -> ContentComponent(
@@ -53,7 +52,7 @@ fun HistoryScreen(
     }
 }
 
-private fun CoroutineScope.loadLoans(
+private fun CoroutineScope.loadPizzas(
     repository: PizzaRepository,
     setHistoryState: (HistoryState) -> Unit,
 ) {
