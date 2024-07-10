@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.shift_pizza_2024.R
-import com.example.shift_pizza_2024.data.Ingredient
-import com.example.shift_pizza_2024.data.Pizza
-import com.example.shift_pizza_2024.data.PizzaIngredient
+import com.example.shift_pizza_2024.data.pizza.Ingredient
+import com.example.shift_pizza_2024.data.pizza.Pizza
+import com.example.shift_pizza_2024.data.pizza.PizzaIngredient
 import com.example.shift_pizza_2024.network.LoadImageFromUrl
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll

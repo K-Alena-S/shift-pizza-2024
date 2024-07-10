@@ -1,6 +1,6 @@
 package com.example.shift_pizza_2024.network
 
-import com.example.shift_pizza_2024.data.Pizza
+import com.example.shift_pizza_2024.data.pizza.Pizza
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType

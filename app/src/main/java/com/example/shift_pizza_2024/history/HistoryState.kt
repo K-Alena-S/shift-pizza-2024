@@ -1,6 +1,6 @@
 package com.example.shift_pizza_2024.history
 
-import com.example.shift_pizza_2024.data.Pizza
+import com.example.shift_pizza_2024.data.pizza.Pizza
 
 sealed interface HistoryState {
 

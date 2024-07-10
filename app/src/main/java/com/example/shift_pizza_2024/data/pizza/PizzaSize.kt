@@ -1,6 +1,5 @@
-package com.example.shift_pizza_2024.data
+package com.example.shift_pizza_2024.data.pizza
 
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable

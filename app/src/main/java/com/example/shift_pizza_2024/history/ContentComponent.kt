@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.shift_pizza_2024.data.Pizza
+import com.example.shift_pizza_2024.data.pizza.Pizza
 import com.example.shift_pizza_2024.network.LoadImageFromUrl
 
 @Composable

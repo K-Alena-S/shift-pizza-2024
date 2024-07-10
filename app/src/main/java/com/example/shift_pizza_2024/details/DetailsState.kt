@@ -1,6 +1,6 @@
 package com.example.shiftintensivelivecoding.details
 
-import com.example.shift_pizza_2024.data.Pizza
+import com.example.shift_pizza_2024.data.pizza.Pizza
 
 interface DetailsState {
 
