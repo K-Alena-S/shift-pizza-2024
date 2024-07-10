@@ -3,6 +3,8 @@ package com.example.shift_pizza_2024.history
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -11,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.shift_pizza_2024.R
 import com.example.shift_pizza_2024.network.PizzaRepository
 import kotlinx.coroutines.CancellationException
@@ -33,7 +36,13 @@ fun HistoryScreen(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Text(text = stringResource(id = R.string.history_title), modifier = Modifier.fillMaxWidth())
+        Text(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 12.dp, horizontal = 8.dp),
+            text = stringResource(id = R.string.history_title),
+            style = MaterialTheme.typography.titleLarge,
+        )
 
         when (val state = historyState) {
             is HistoryState.Initial,
