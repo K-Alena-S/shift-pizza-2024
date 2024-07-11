@@ -53,4 +53,7 @@
 
     <string name="pizza_image_cd">Картинка</string>
 
+    <!--	Shopping Cart -->
+    <string name="shopping_cart">Корзина покупок</string>
+
 </resources>

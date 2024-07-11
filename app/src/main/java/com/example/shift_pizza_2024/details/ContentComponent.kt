@@ -1,6 +1,8 @@
 package com.example.shiftintensivelivecoding.details
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,12 +20,14 @@ import com.example.shift_pizza_2024.data.pizza.PizzaIngredient
 import com.example.shift_pizza_2024.network.LoadImageFromUrl
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import com.example.shift_pizza_2024.shopping_cart.ShopScreen
 
 @Composable
 fun ContentComponent(
 	pizza: Pizza,
 ) {
-	Column {
+	val scrollState = rememberScrollState()
+	Column(modifier = Modifier.verticalScroll(scrollState)) {
 		DetailItem(nameResId = R.string.details_name, value = pizza.name)
 		DetailItem(nameResId = R.string.details_description, value = pizza.description)
 		DetailItem(nameResId = R.string.details_calories, value = pizza.calories.toString())
@@ -33,13 +37,12 @@ fun ContentComponent(
 		DetailItem(nameResId = R.string.details_sodium, value = pizza.sodium)
 		DetailItem(nameResId = R.string.details_ingredients, value = "")
 		FormatAmountText(pizza.ingredients)
+		PizzaShoppingCart(item = pizza, onItemClicked = { ShopScreen(pizza = pizza) })
 	}
 }
 @Composable
 fun FormatAmountText(ingredients: List<PizzaIngredient>) {
-	val scrollState = rememberScrollState()
-
-	Column(modifier = Modifier.verticalScroll(scrollState)) {
+	Column() {
 		for (ingredient in ingredients) {
 			val nameId = when (ingredient.name) {
 				Ingredient.PINEAPPLE -> R.string.ingredient_pineapple
@@ -81,5 +84,23 @@ fun DetailItem(@StringRes nameResId: Int, value: String) {
 	) {
 		Text(text = stringResource(nameResId), style = MaterialTheme.typography.labelLarge)
 		Text(text = value, style = MaterialTheme.typography.bodyLarge)
+	}
+}
+
+@Composable
+private fun PizzaShoppingCart(
+	item: Pizza,
+	onItemClicked: @Composable () -> Unit,
+) {
+	Column (
+		modifier = Modifier
+			.fillMaxWidth()
+//			.clickable(onClick = onItemClicked)
+			.padding(vertical = 8.dp, horizontal = 16.dp),
+	) {
+		Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+			Text(text = "Добавить в корзину")
+			LoadImageFromUrl(url = item.img)
+		}
 	}
 }

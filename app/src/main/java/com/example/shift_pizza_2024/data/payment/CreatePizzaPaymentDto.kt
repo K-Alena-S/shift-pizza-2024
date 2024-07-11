@@ -4,5 +4,5 @@ data class CreatePizzaPaymentDto(
     val receiverAddress: ReceiverAddress,
     val person: Person,
     val debitCard: DebitCard,
-    val pizzas: CreatePizzaPaymentPizzaDto
+    val pizzas: List<CreatePizzaPaymentPizzaDto>
 )

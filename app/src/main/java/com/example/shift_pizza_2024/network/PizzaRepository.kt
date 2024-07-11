@@ -50,6 +50,6 @@ class PizzaRepository {
         pizzaApi.getCatalog().catalog
 
     suspend fun getPizza(pizzaId: Long): Pizza =
-        pizzaApi.getCatalog().catalog[pizzaId.toInt()]
+        pizzaApi.getCatalog().catalog[pizzaId.toInt()-1]
 
 }
