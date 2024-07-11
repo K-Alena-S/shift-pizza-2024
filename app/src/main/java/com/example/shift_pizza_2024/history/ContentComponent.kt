@@ -19,7 +19,7 @@ import com.example.shift_pizza_2024.network.LoadImageFromUrl
 @Composable
 fun ContentComponent(
     pizza: List<Pizza>,
-    onItemClicked: (pizzaId: Long) -> Unit,
+    onItemClicked: (loanId: Long) -> Unit,
 ) {
     LazyColumn(modifier = Modifier.fillMaxHeight()) {
         items(pizza) { pizzas ->

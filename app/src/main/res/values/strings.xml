@@ -55,5 +55,6 @@
 
     <!--	Shopping Cart -->
     <string name="shopping_cart">Корзина покупок</string>
+    <string name="shopping_add">Добавить в корзину</string>
 
 </resources>
